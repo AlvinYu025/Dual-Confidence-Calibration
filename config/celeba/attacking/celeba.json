@@ -1,0 +1,58 @@
+{
+    "root_path": "./attack_results/",
+    "dataset":{
+        "model_name": "VGG16",
+        "train_file_path": "./datasets/celeba/meta/trainset.txt",
+        "test_file_path": "./datasets/celeba/meta/testset.txt",
+        "gan_file_path": "/datasets/celeba/meta/ganset.txt",
+        "name": "celeba",
+        "img_path": "/home/comp/f1251215/Re-thinking_MI/datasets/celeba/img_align_celeba",
+        "img_gan_path": "/home/comp/f1251215/Re-thinking_MI/datasets/celeba/img_align_celeba",
+        "n_classes":1000,
+        "p_reg_path": "./checkpoints/p_reg"
+    },
+
+    "train":{
+        "model_types": "VGG16",
+        "cls_ckpts": "./checkpoints/target_model/target_ckp/VGG16_ls_final_-0.05_83.84.tar",      
+        "num_seeds": 5,
+        "Nclass": 300,
+        "gan_model_dir": "./checkpoints/GAN",
+        "eval_model": "FaceNet",
+        "eval_dir": "./checkpoints/target_model/target_ckp/FaceNet_95.88.tar"
+        },
+
+    "attack":{
+        "method": "gmi",
+        "variant": "baseline",
+        "lr": 0.02,
+        "lam": 1.0,
+        "same_z":"",
+        "z_dim": 100
+    },
+
+    "RLB_MI":{
+        "max_step": 1,
+        "seed": 42,
+        "alpha": 0
+    },
+
+    "BREP_MI":{
+        "sphere_points_count" : 32,
+        "current_sphere_radius" : 1,
+        "sphere_expansion_coeff" : 1.275,
+        "step_size" : 0,
+        "current_iter" : 0,
+        "point_clamp_min" : -1.2,
+        "point_clamp_max" : 1.2,
+        "batch_dim_for_initial_points" : 256,
+        "repulsion_only" : "True"
+    },
+
+    "PLG_MI":{
+        "inv_loss_weight": 0.2,
+        "tune_cGAN_lr": 0.002,
+        "beta1": 0.0,
+        "beta2": 0.9
+    }
+}
